@@ -1,0 +1,169 @@
+{% extends "base.html" %}
+
+{% block contents %}
+
+<div class="container">
+    <p>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#healing"
+            aria-expanded="false" aria-controls="healing">
+            힐링
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#history"
+            aria-expanded="false" aria-controls="history">
+            역사
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#food"
+            aria-expanded="false" aria-controls="food">
+            식도락
+        </button>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#hot"
+            aria-expanded="false" aria-controls="hot">
+            핫플
+        </button>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#ex"
+            aria-expanded="false" aria-controls="ex">
+            체험
+        </button>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#activity"
+            aria-expanded="false" aria-controls="activity">
+            액티비티
+        </button>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#shoping"
+            aria-expanded="false" aria-controls="shoping">
+            쇼핑
+        </button>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#culture"
+            aria-expanded="false" aria-controls="culture">
+            문화
+        </button>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#night"
+            aria-expanded="false" aria-controls="night">
+            야경
+        </button>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#child"
+            aria-expanded="false" aria-controls="child">
+            아이동반
+        </button>
+    </p>
+
+    <div class="collapse" id="healing">
+        <div class="card card-body">
+            <ul>
+                {% for a in healing %}
+                <li>
+                    {{ a.name }}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div class="collapse" id="history">
+        <div class="card card-body">
+            <ul>
+                {% for a in history %}
+                <li>
+                    {{ a.name }}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div class="collapse" id="food">
+        <div class="card card-body">
+            <ul>
+                {% for a in food %}
+                <li>
+                    {{ a.name }}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div class="collapse" id="hot">
+        <div class="card card-body">
+            <ul>
+                {% for a in hot %}
+                <li>
+                    {{ a.name }}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div class="collapse" id="ex">
+        <div class="card card-body">
+            <ul>
+                {% for a in ex %}
+                <li>
+                    {{ a.name }}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div class="collapse" id="activity">
+        <div class="card card-body">
+            <ul>
+                {% for a in activity %}
+                <li>
+                    {{ a.name }}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div class="collapse" id="shoping">
+        <div class="card card-body">
+            <ul>
+                {% for a in shoping %}
+                <li>
+                    {{ a.name }}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div class="collapse" id="culture">
+        <div class="card card-body">
+            <ul>
+                {% for a in culture %}
+                <li>
+                    {{ a.name }}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div class="collapse" id="night">
+        <div class="card card-body">
+            <ul>
+                {% for a in night %}
+                <li>
+                    {{ a.name }}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div class="collapse" id="child">
+        <div class="card card-body">
+            <ul>
+                {% for a in child %}
+                <li>
+                    {{ a.name }}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    
+</div>
+
+{% endblock contents %}

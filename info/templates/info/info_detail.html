@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block contents %}
+
+<!-- <div class="container">
+    <div class="card">
+        <div class="card-header">
+            Todo 상세 보기
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{ inform.name }}</h5>
+          <p class="card-text">{{ inform.tel }}</p>
+          <a href="{% url 'info_list' %}" class="btn btn-primary">목록으로 돌아가기</a>
+        </div>
+      </div>
+</div> -->
+
+
+
+<div class="card text-center">
+    <div class="card-header">
+      <h2>{{ inform.name }}</h2>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{{ inform. }}</h5>
+      <p class="card-text">{{ inform.contents }}</p>
+    </div>
+    <div class="card-footer text-muted">
+        {{ inform.address }}<br>
+        {{ inform.tel }}<br>
+        <button type="button" class="btn btn-primary">지도보기</button>
+    </div>
+  </div>
+  <br>
+
+    <a href="{% url 'info_list' %}" class="btn btn-primary">목록으로 돌아가기</a>
+
+
+
+{% endblock contents %}

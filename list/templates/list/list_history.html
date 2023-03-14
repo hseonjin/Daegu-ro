@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+
+{% block contents %}
+
+<div class="container" id="site">
+<div class="jumbotron jumbotron-fluid" style="background-color: #F8F8FF;">
+    <div class="container">
+      <h1 class="display-6" style="text-align: center;">#역사</h1>
+    </div>
+  </div>
+</div>
+
+<div class="container" style="margin-left: 50px;">
+    <div id="map" style="width:90%;height:600px;"></div>
+    
+    <div id="lat" style="display: none">
+        {% for lo in history %}
+        {{ lo.lat }},
+        {% endfor %}
+    </div>
+    
+    <div id="lon" style="display: none">
+        {% for lo in history %}
+        {{ lo.lon }},
+        {% endfor %}
+    </div>
+    
+    <div id="name" style="display: none">
+        {% for lo in history %}
+        {{ lo.name }},
+        {% endfor %}
+    </div>
+    
+    <script type="text/javascript"
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3319ecdda0983e14fa5f16ab1166eab8&libraries=services,clusterer,drawing"></script>
+    
+    <script>
+        var container = document.getElementById('map');
+    
+        var options = {
+            center: new kakao.maps.LatLng(35.86437, 128.59264),
+            level: 4
+        };
+    
+        var map = new kakao.maps.Map(container, options);
+    
+        var markerPosition = new kakao.maps.LatLng(35.86910, 128.58318);
+    
+        var marker = new kakao.maps.Marker({
+            position: markerPosition
+        })
+    
+        var map = new kakao.maps.Map(container, options);
+    
+        // 문자열을 가져오고 , 기준으로 문자열을 쪼개기
+        var list_lat = document.getElementById('lat').innerText.split(',');
+        var list_lon = document.getElementById('lon').innerText.split(',');
+        var list_name = document.getElementById('name').innerText.split(',');
+    
+        // 좌표를 저장할 배열 생성
+        var locations = new Array();
+    
+        // 위도와 경도 정보를 차례로 좌표를 배열에 저장
+        for (var idx = 0; idx < list_lat.length; idx++) {
+            var latitude = list_lat[idx];
+            var longitude = list_lon[idx];
+            locations.push(new kakao.maps.LatLng(latitude, longitude));
+        }
+    
+        // 저장한 좌표 수만큼 지도에 marker
+        for (var idx = 0; idx < locations.length; idx++) {
+            var marker = new kakao.maps.Marker({
+                map: map,
+                position: locations[idx],
+                title: list_name[idx]
+            });
+        }
+    
+        marker.setMap(map);
+    
+    
+    
+        var iwContent = '<div style="padding:5px;">Hello World! <br><a href="https://map.kakao.com/link/map/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">길찾기</a></div>',
+            iwRemoveable = true;
+    
+        // 인포윈도우를 생성
+        var infowindow = new kakao.maps.InfoWindow({
+            position: iwPosition,
+            content: iwContent
+        });
+    
+        kakao.maps.event.addListener(marker, 'click', function () {
+            infowindow.open(map);
+        })
+    
+        infowindow.open(map);
+    
+    </script>
+</div>
+
+<div class="container" style="margin-top: 100px; margin-bottom: 100px;">
+    <div class="container">
+        <ul class="list-group">
+            {% for a in history %}
+            <li class="list-group-item"> {{ a.name }}
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal{{a.id}}"
+                    style="float:right">상세</button>
+                <div class="modal fade" id="exampleModal{{a.id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true" style="text-align: center;">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">{{ a.name }}</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>{{ a.contents }}</p>
+                                <p>{{ a.tel }}</p>
+                                <p>{{ a.address }}</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+{% endblock contents %}

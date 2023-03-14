@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block contents %}
+
+<div class="container">
+    <h1><b>대구 관광지 목록</b></h1>
+
+
+    <ul class="list-group">
+        {% for info_ in info %}
+        <!--todos에서 하나씩 뽑아 todo에 넣쟈-->
+        <li class="list-group-item" style="line-height: 40px;">
+            <a href="{% url 'info_detail' pk=info_.id %}">{{ info_.name }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+<br>
+
+
+<!-- 검색 -->
+    <!-- <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form> -->
+
+
+
+
+
+<!-- Pagination -->
+<div style="text-align:center">
+    <div class="pagination">
+        <div style="width:35%; margin: 5px;">
+
+            {% if info.has_previous %}
+            <a class="abutton" href="?page=1">맨 앞으로</a>
+            <a class="abutton" href="?page={{ info.previous_page_number }}">이전</a>
+            {% endif %}
+        </div>
+        <div style="width:30%; margin: 5px;">
+            {% for page in info.paginator.page_range %}
+            {% if page >= page.number|add:-2 and page <= page.number|add:2 %} <span
+                class="{% if page == info.number %}current{% endif %}">
+                <a href="?page={{ page }}">{{ page }}</a>
+                </span>
+                {% elif page >= info.number|add:-3 and page <= info.number|add:3 %} 숫자 {% endif %} {% endfor %} </div>
+
+                    <div style="width:35%; margin: 5px;">
+                        {% if info.has_next %}
+                        <a class="abutton" href="?page={{ info.next_page_number }}">다음</a>
+                        <a class="abutton" href="?page={{ info.paginator.num_pages }}">맨 뒤로</a>
+                        {% endif %}
+                    </div>
+
+        </div>
+    </div>
+
+    <!-- <div class="container">
+    <nav aria-label="...">
+        <ul class="pagination justify-content-center">
+
+            {% if info.has_previous %}
+            <a href="?page=1">
+                <li class="page-item disabled">
+                    <span class="page-link">맨 앞으로</span>
+                </li>
+            </a>
+            <a href="?page={{ info.previous_page_number }}">
+                <li class="page-item disabled">
+                    <span class="page-link">이전 페이지</span>
+                </li>
+            </a>
+            {% endif %}
+
+
+            {% for page in info.paginator.page_range %}
+                {% if page >= page.number|add:-2 and page <= page.number|add:2 %}
+                    <span class="{% if page == info.number %}current{% endif %}">
+                        <a href="?page={{ page }}">{{ page }}</a>
+                    </span>
+                {% elif page >= info.number|add:-3 and page <= info.number|add:3 %}
+                            
+                            숫자
+    
+                {% endif %}
+            {% endfor %}
+
+
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item active" aria-current="page">
+                <span class="page-link">2</span>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+            </li>
+        </ul>
+    </nav>
+</div> -->
+
+
+
+
+
+    {% endblock contents %}

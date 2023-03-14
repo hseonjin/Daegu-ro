@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block contents %}
+
+    <!-- thema가 힐링인 경우 좌표값과 장소명 -->
+    <div id="heling_lat" style="display: none">
+        {% for trip_ in healing  %}
+            {{ trip_.lat }},
+        {% endfor %}
+    </div>
+
+    <div id="heling_lon" style="display: none">
+        {% for trip_ in healing  %}
+            {{ trip_.lon }},
+        {% endfor %}
+    </div>
+
+    <div id="heling_name">
+        {% for trip_ in healing  %}
+            {{ trip_.name }}
+        {% endfor %}
+    </div>
+
+
+    <h1>map</h1>
+	<div id="map" style="width:800px;height:600px;"></div>
+
+    <div id="lat" style="display: none">
+        {% for lo in healing %}
+            {{ lo.lat }},
+        {% endfor %}
+    </div>
+
+    <div id="lon" style="display: none">
+        {% for lo in healing %}
+            {{ lo.lon }},
+        {% endfor %}
+    </div>
+
+    <div id="name" style="display: none">
+        {% for lo in healing %}
+            {{ lo.name }},
+        {% endfor %}
+    </div>
+    
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3319ecdda0983e14fa5f16ab1166eab8&libraries=services,clusterer,drawing"></script>
+
+	<script>
+		var container = document.getElementById('map');
+
+		var options = {
+			center: new kakao.maps.LatLng(35.86437, 128.59264),
+			level: 4
+		};
+
+		var map = new kakao.maps.Map(container, options);
+
+        var markerPosition = new kakao.maps.LatLng(35.86910, 128.58318);
+
+        var marker = new kakao.maps.Marker({
+            position: markerPosition
+        })
+
+        var map = new kakao.maps.Map(container, options);
+        
+        // 문자열을 가져오고 , 기준으로 문자열을 쪼개기
+        var list_lat = document.getElementById('lat').innerText.split(',');
+        var list_lon = document.getElementById('lon').innerText.split(',');
+        var list_name = document.getElementById('name').innerText.split(',');
+
+        // 좌표를 저장할 배열 생성
+        var locations = new Array();
+
+        // 위도와 경도 정보를 차례로 좌표를 배열에 저장
+        for(var idx=0; idx<list_lat.length;idx++){
+            var latitude = list_lat[idx];
+            var longitude = list_lon[idx];
+            locations.push(new kakao.maps.LatLng(latitude,longitude));
+        }
+
+        // 저장한 좌표 수만큼 지도에 marker
+        for(var idx=0; idx<locations.length;idx++){
+            var marker = new kakao.maps.Marker({
+                map: map,
+                position: locations[idx],
+                title: list_name[idx]
+            });
+        }
+        marker.setMap(map);
+
+        // 인포윈도우 생성해서 장소명 나오게 하고 그 아래에 상세보기 링크 만들기 > 상세보기
+
+    </script>
+
+{% endblock contents %}

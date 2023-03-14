@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block contents %}
+
+<div class="container" id="site">
+  
+  <div class="jumbotron jumbotron-fluid" style="background-color: #F8F8FF;">
+    <div class="container">
+      <h1 class="display-6" style="text-align: center;">테마별 여행지 리스트</h1>
+      <p class="lead" style="text-align: center;">뭐쓰징</p>
+    </div>
+  </div>
+  <!-- 테마 선택 > 페이지이동, 지도에 마커 > 누르면 상세정보 노출<br>-->
+
+
+    <div class="container" style="margin: auto; padding-left: 80px;">
+      <a href="{% url 'list_healing' %}"><button type="button" class="btn btn-outline-primary btn-lg" style="width: 10rem; height: 10rem; margin: 30px;">#힐링</button></a>
+
+      <a href="{% url 'list_history' %}"><button type="button" class="btn btn-outline-secondary btn-lg" style="width: 10rem; height: 10rem; margin: 30px;">#역사</button></a>
+
+      <a href="{% url 'list_food' %}"><button type="button" class="btn btn-outline-success btn-lg" style="width: 10rem; height: 10rem; margin: 30px;">#식도락</button></a>
+
+      <a href="{% url 'list_hotplace' %}"><button type="button" class="btn btn-outline-danger btn-lg" style="width: 10rem; height: 10rem; margin: 30px;">#핫플</button></a>
+
+      <a href="{% url 'list_experience' %}"><button type="button" class="btn btn-outline-warning btn-lg" style="width: 10rem; height: 10rem; margin: 30px;">#체험</button></a>
+
+      <a href="{% url 'list_activity' %}"><button type="button" class="btn btn-outline-info btn-lg" style="width: 10rem; height: 10rem; margin: 30px;">#액티비티</button></a>
+
+      <a href="{% url 'list_shoping' %}"><button type="button" class="btn btn-outline-dark btn-lg" style="width: 10rem; height: 10rem; margin: 30px;">#쇼핑</button></a>
+
+      <a href="{% url 'list_culture' %}"><button type="button" class="btn btn-outline-primary btn-lg" style="width: 10rem; height: 10rem; margin: 30px;">#문화</button></a>
+
+      <a href="{% url 'list_night' %}"><button type="button" class="btn btn-outline-secondary btn-lg" style="width: 10rem; height: 10rem; margin: 30px;">#야경</button>
+
+      <a href="{% url 'list_child' %}"><button type="button" class="btn btn-outline-success btn-lg"style="width: 10rem; height: 10rem; margin: 30px;">#아이동반</button></a>
+    </div>
+
+</div>
+
+{% endblock contents %}
