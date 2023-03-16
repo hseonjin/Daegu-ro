@@ -5,6 +5,11 @@
 
 &nbsp;
 
+<h3>💡 프로젝트 주제 💡</h3>
+<p>대구광역시 관광 트렌드 분석 및 관광지 소개 웹 서비스 개발</p>
+
+&nbsp;
+
 <h3>📆 프로젝트 기간 📆</h3>
 <p>2022.08.08 ~ 2022.08.12</p>
 
@@ -62,6 +67,7 @@
 <div align="center">
 
 ![dash](https://user-images.githubusercontent.com/126320580/223999409-b7779638-ccf1-4cfb-867c-f95b617b0a41.png)
+
 </div>
 &nbsp;
 &nbsp;
@@ -81,4 +87,5 @@
 ![2](https://user-images.githubusercontent.com/126320580/224000817-95bd1174-30aa-4359-bedc-44ed1c7e6008.png)
 
 ![image (4)](https://user-images.githubusercontent.com/126320580/224000827-aed78e8c-e1c1-41ce-8863-7e3704c412a3.png)
+
 </div>
